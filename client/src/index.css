@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: rgb(255, 255, 255);
+  font-family: 'Literata', serif;
+}
+.flowbite-carousel img {
+  border-radius: 0 !important;
+}
+/* Add this to your existing styles or create a new CSS file */
+#dropdownNavbar,
+#doubleDropdown1,
+#doubleDropdown2,
+#doubleDropdown3,
+#doubleDropdown4 {
+  z-index: 1000; /* Adjust the value as needed */
+}
+/* Add this to your existing styles or create a new CSS file */
+#default-carousel {
+  position: relative;
+  z-index: 1; /* Set a value higher than the dropdown's z-index */
+}
+.flowbite-carousel img {
+  border-radius: 0 !important;
+}
+
+/* Add this CSS to your stylesheet */
+#dropdownNavbar {
+  position: absolute;
+  top: calc(100% + 5px); /* Adjust the distance from the top */
+  left: 0;
+}
+
+
+
+
+
+.popup-container {
+  
+  z-index: 9999; /* Ensure the popup appears above other elements */
+ 
+ 
+  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup-container input {
+  /* Add any additional styling for input fields */
+}
+
+
+
+
+
+
+
+
