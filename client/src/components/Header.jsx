@@ -166,7 +166,7 @@ const Header = () => {
       <nav class="bg-white border-gray-600 fixed w-full z-20 top-0 start-0 border-gray-600 bg-white mt-0 shadow-md">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3 ">
           <h1 class="flex flex-wrap text-xl font-bold cursor-pointer sm:text-2xl md:text-3xl">
-            <span class="text-green-600">N</span>
+            <span class="text-green-600">Tech</span>
             <span class="text-blue-800">Chapters</span>
           </h1>
 
@@ -247,64 +247,9 @@ const Header = () => {
                         class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
                         Faculty Clubs
-                        <svg
-                          class="w-2.5 h-2.5 ms-2.5"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 10 6"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="m1 1 4 4 4-4"
-                          />
-                        </svg>
+                       
                       </button>
-                      <div
-                        id="doubleDropdown1"
-                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-                      >
-                        <ul
-                          class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                          aria-labelledby="doubleDropdownButton1"
-                        >
-                          <li>
-                            <a
-                              href="/FOC"
-                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Faculty of Computing
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="/FOB"
-                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Faculty of Business
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="/FOE"
-                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Faculty of Engineering
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="/FOS"
-                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Faculty of Science
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
+                     
                     </li>
 
                     <li>
