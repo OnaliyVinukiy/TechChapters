@@ -246,7 +246,7 @@ const Header = () => {
                         type="button"
                         class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
-                        Faculty Clubs
+                        Western Province
                        
                       </button>
                      
@@ -257,7 +257,7 @@ const Header = () => {
                         href="/Religous"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                       >
-                        Religous Clubs
+                        Eastern Province
                       </a>
                     </li>
 
@@ -266,7 +266,7 @@ const Header = () => {
                         href="/activitybased"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                       >
-                        Activity Based Clubs
+                        Central Province
                       </a>
                     </li>
                     <li>
@@ -274,7 +274,39 @@ const Header = () => {
                         href="/international"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                       >
-                        International Clubs
+                        Northern Province
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/international"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        North Western Province
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/international"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        North Central Province
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/international"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        Uva Province
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/international"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        Sabaragamuwa Province
                       </a>
                     </li>
                   </ul>
