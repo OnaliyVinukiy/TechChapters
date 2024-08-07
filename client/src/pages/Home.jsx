@@ -28,7 +28,6 @@ export default function Home() {
   return (
     <div className="relative">
       <div className="relative z-0 mt-14" style={getHeightStyle()}>
-     
         <Carousel
           slideInterval={5000}
           theme={{
@@ -135,7 +134,7 @@ export default function Home() {
           <div class="p-5">
             <a href="/clubs">
               <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-               Institute of Informatics Technology
+                Institute of Informatics Technology
               </h5>
             </a>
 
@@ -175,7 +174,7 @@ export default function Home() {
           <div class="p-5">
             <a href="/FOB">
               <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Kothalawala Defence Unit 
+                Kothalawala Defence Unit
               </h5>
             </a>
             {/* <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> */}
@@ -214,10 +213,10 @@ export default function Home() {
           <div class="p-5">
             <a href="/FOE">
               <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-              NSBM Green University
+                NSBM Green University
               </h5>
             </a>
-           
+
             <a
               href="/FOE"
               class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
@@ -253,7 +252,7 @@ export default function Home() {
           <div class="p-5">
             <a href="/FOS">
               <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                University of <br/> Colombo
+                University of <br /> Colombo
               </h5>
             </a>
             {/* <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> */}
@@ -294,7 +293,8 @@ export default function Home() {
           <div class="p-5">
             <a href="/international">
               <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                University of <br/>Kelaniya
+                University of <br />
+                Kelaniya
               </h5>
             </a>
             {/* <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> */}
@@ -370,8 +370,8 @@ export default function Home() {
           </a>
           <div class="p-5">
             <a href="/activitybased">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Activity Based Clubs & Societies
+              <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                University of <br /> Ruhuna
               </h5>
             </a>
             {/* <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> */}
@@ -409,8 +409,8 @@ export default function Home() {
           </a>
           <div class="p-5">
             <a href="/careerguidance">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Career Guidance Unit (NForce){" "}
+              <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                University of Sri Jayawardanapura
               </h5>
             </a>
             {/* <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> */}
