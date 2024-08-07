@@ -15,7 +15,7 @@ export default function Footer() {
             </h1>
           </a>
           <p className="my-6 text-white">
-            Explore the vibrant tapestry of NSBM Green University's clubs and
+            Explore the vibrant tapestry of Sri Lankan technological clubs and
             societies <br /> where passions unite, talents flourish, and a
             myriad of events unfold.
           </p>
