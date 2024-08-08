@@ -167,7 +167,7 @@ export default function Home() {
           <a href="/FOB">
             <img
               class="rounded-t-lg w-full h-40 object-cover"
-              src="https://raw.githubusercontent.com/OnaliyVinukiy/TechChapters/main/client/src/images/iit.png
+              src="https://raw.githubusercontent.com/OnaliyVinukiy/TechChapters/main/client/src/images/kdu.jpg
 "
               alt=""
             />
@@ -206,7 +206,7 @@ export default function Home() {
           <a href="/FOE">
             <img
               class="rounded-t-lg"
-              src="https://raw.githubusercontent.com/NChapters-Project/NChapters/master/client/src/images/engi.jpg
+              src="https://raw.githubusercontent.com/OnaliyVinukiy/TechChapters/main/client/src/images/nsbm.jpg
 "
               alt=""
             />
