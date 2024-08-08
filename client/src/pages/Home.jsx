@@ -127,7 +127,7 @@ export default function Home() {
           <a href="#">
             <img
               class="rounded-t-lg"
-              src="https://raw.githubusercontent.com/NChapters-Project/NChapters/master/client/src/images/foc.jpg"
+              src="https://raw.githubusercontent.com/NChapters-Project/NChapters/master/client/src/images/iit.png"
               alt=""
             />
           </a>

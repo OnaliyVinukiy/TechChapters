@@ -26,7 +26,7 @@ function FOC() {
           id: key,
           ...clubsData[key]
         }));
-        const focClubs = clubsArray.filter(club => club.category === "FOC");
+        const focClubs = clubsArray.filter(club => club.university === "IIT");
         setClubs(focClubs);
         setLoading(false);
       } else {
@@ -111,9 +111,9 @@ function FOC() {
           </div>
         </div>
       )}
-      <section className="bg-center bg-no-repeat bg-[url(src/images/com.jpg)] bg-gray-700 bg-blend-multiply mt-12">
+      <section className="bg-center bg-no-repeat bg-[url()] bg-gray-700 bg-blend-multiply mt-12">
         <div className="px-4 mx-auto max-w-screen-xl md:h-[20rem] sm:h-[15rem] text-center py-12 lg:py-20">
-          <h3 className="mt-8 text-2xl font-extrabold tracking-tight leading-none text-white md:text-2xl lg:text-5xl">Faculty of Computing</h3>
+          <h3 className="mt-8 text-2xl font-extrabold tracking-tight leading-none text-white md:text-2xl lg:text-5xl">Institute of Informatics Technology</h3>
           <p className="mt-6 text-lg font-normal text-gray-300 lg:text-3xl sm:px-16 lg:px-48">Clubs & Societies</p>
         </div>
       </section>
