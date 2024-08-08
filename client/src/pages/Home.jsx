@@ -126,8 +126,9 @@ export default function Home() {
         <div class="w-64 h-80 bg-white border border-gray-200 rounded-lg shadow bg-gray-800 dark:border-gray-700 mb-4 md:mb-0">
           <a href="#">
             <img
-              class="rounded-t-lg"
-              src="https://raw.githubusercontent.com/NChapters-Project/NChapters/master/client/src/images/iit.png"
+              class="rounded-t-lg w-full h-40 object-cover"
+              src="https://raw.githubusercontent.com/OnaliyVinukiy/TechChapters/main/client/src/images/iit.png
+"
               alt=""
             />
           </a>
@@ -165,8 +166,8 @@ export default function Home() {
         <div class="w-64 h-80 bg-white border border-gray-200 rounded-lg shadow bg-gray-800 dark:border-gray-700 mb-4 lg:ml-12 md:mb-0">
           <a href="/FOB">
             <img
-              class="rounded-t-lg"
-              src="https://raw.githubusercontent.com/NChapters-Project/NChapters/master/client/src/images/fob1.jpg
+              class="rounded-t-lg w-full h-40 object-cover"
+              src="https://raw.githubusercontent.com/OnaliyVinukiy/TechChapters/main/client/src/images/iit.png
 "
               alt=""
             />
