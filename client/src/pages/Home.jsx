@@ -205,7 +205,7 @@ export default function Home() {
         <div class="w-64 h-80 bg-white border border-gray-200 rounded-lg shadow bg-gray-800 dark:border-gray-700 mb-4 lg:ml-12 md:mb-0">
           <a href="/FOE">
             <img
-              class="rounded-t-lg"
+              class="rounded-t-lg w-full h-40 object-cover"
               src="https://raw.githubusercontent.com/OnaliyVinukiy/TechChapters/main/client/src/images/nsbm.jpg
 "
               alt=""
