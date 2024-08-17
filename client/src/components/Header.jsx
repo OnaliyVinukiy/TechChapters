@@ -9,7 +9,15 @@ import {
   signOutUserStart,
   signOutUserSuccess,
 } from "../redux/user/userSlice";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase} from "firebase/database";
+
+import { getAuth} from "firebase/auth";
+import { auth, database } from "../firebase"; // Import the initialized Firebase objects
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { ref, onValue } from "firebase/database";
+
+const googleProvider = new GoogleAuthProvider();
+
 
 const Header = () => {
   const [isDataFetched, setIsDataFetched] = useState(false);
@@ -86,15 +94,13 @@ const Header = () => {
     return () => {};
   }, [msalInstance, isDataFetched, currentUser, isLeader]);
 
-  const handleMicrosoftLogin = async () => {
+  const handleGoogleLogin = async () => {
     try {
       dispatch(signInStart());
-      await msalInstance.handleRedirectPromise();
-      const loginResponse = await msalInstance.loginPopup();
+      const result = await signInWithPopup(auth, googleProvider);
+      const { email, displayName } = result.user;
 
-      const { email, name } = loginResponse.account;
-
-      dispatch(signInSuccess({ email, name }));
+      dispatch(signInSuccess({ email, name: displayName }));
       navigate("/");
     } catch (error) {
       dispatch(signInFailure(error.message));
@@ -104,14 +110,13 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       dispatch(signOutUserSuccess());
-      await msalInstance.logout();
-      localStorage.removeItem("user");
-      dispatch({ type: "USER_LOGOUT_SUCCESS" });
+      await auth.signOut();
       navigate("/");
     } catch (error) {
       console.error("Error logging out:", error);
     }
   };
+
 
   const handleAdditionalDropdownToggle = () => {
     setIsAdditionalDropdownVisible(!isAdditionalDropdownVisible);
@@ -508,7 +513,7 @@ const Header = () => {
               <li className="mr-0">
                 <button
                   type="button"
-                  onClick={currentUser ? handleLogout : handleMicrosoftLogin}
+                  onClick={currentUser ? handleLogout : handleGoogleLogin}
                   className="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-1.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mr-0"
                 >
                   {" "}
