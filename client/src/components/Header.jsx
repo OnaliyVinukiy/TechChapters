@@ -342,7 +342,7 @@ const Header = () => {
                 </a>
               </li>
 
-              {currentUser?.name === "OV Jayawardana" && (
+              {currentUser?.name === "Onaliy Vinukiy Jayawardana" && (
                 <li className="flex items-center relative">
                   <a
                     href="/ContactList"
@@ -441,7 +441,7 @@ const Header = () => {
                 </li>
               )}
 
-              {isLeader && currentUser.name !== "OV Jayawardana" && (
+              {isLeader && currentUser.name !== "Onaliy Vinukiy Jayawardana" && (
                 <li className="flex items-center relative">
                   {/* Render additional links for leaders */}
                   <button
@@ -503,7 +503,7 @@ const Header = () => {
 
               <li class="flex items-center mr-0">
                 {currentUser &&
-                  currentUser.name !== "OV Jayawardana" &&
+                  currentUser.name !== "Onaliy Vinukiy Jayawardana" &&
                   !isLeader && (
                     <span className="block py-2 px-3 text-black md:text-m rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-600 md:p-0 text-black md:hover:text-green-600">
                       Welcome, {currentUser.name}
