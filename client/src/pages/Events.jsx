@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { getDatabase, ref, onValue } from "firebase/database";
-import { Link } from "react-router-dom";
-import Calendar from "react-calendar"; // Import the Calendar component
-import "react-calendar/dist/Calendar.css"; // Import the calendar styles
+import React, { useState, useEffect } from 'react';
+import { getDatabase, ref, onValue } from 'firebase/database';
+import { Link } from 'react-router-dom';
+import Calendar from 'react-calendar'; // Import the Calendar component
+import 'react-calendar/dist/Calendar.css'; // Import the calendar styles
 
 function Events() {
   const [events, setEvents] = useState([]);
-  const [selectedClub, setSelectedClub] = useState("");
+  const [selectedClub, setSelectedClub] = useState('');
   const [clubNames, setClubNames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [date, setDate] = useState(null); // State for selected date
 
   useEffect(() => {
     const database = getDatabase();
-    const eventsRef = ref(database, "events");
+    const eventsRef = ref(database, 'events');
 
     onValue(eventsRef, (snapshot) => {
       const eventData = snapshot.val();
@@ -47,6 +47,21 @@ function Events() {
     });
   };
 
+  // Function to generate Google Calendar link
+  const generateGoogleCalendarLink = (event) => {
+    const { eventName, description, date, time } = event;
+
+    // Parse the date and time to create a valid start and end time
+    const startDateTime = new Date(`${date}T${time}`); // Assuming time is in HH:mm format
+    const endDateTime = new Date(startDateTime.getTime() + 60 * 60 * 1000); // 1 hour later
+
+    const startFormatted = startDateTime.toISOString().replace(/-|:|\.\d+/g, ''); // Format: YYYYMMDDTHHMMSSZ
+    const endFormatted = endDateTime.toISOString().replace(/-|:|\.\d+/g, ''); // Format: YYYYMMDDTHHMMSSZ
+
+    const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventName)}&details=${encodeURIComponent(description)}&dates=${startFormatted}/${endFormatted}`;
+    return calendarUrl;
+  };
+
   // Filter events based on selected club and date
   const filteredEvents = events.filter((event) => {
     const eventDate = new Date(event.date); // Assuming the date is in a format that can be parsed
@@ -60,20 +75,13 @@ function Events() {
     <div>
       <section className="bg-center bg-no-repeat bg-[url(https://raw.githubusercontent.com/NChapters-Project/NChapters/master/client/src/images/uni.jpg)] bg-gray-700 bg-blend-multiply mt-12">
         <div className="px-4 mx-auto max-w-screen-xl md:h-[20rem] sm:h-[15rem] text-center py-12 lg:py-20">
-          <h3 className="mt-8 text-3xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
-            Events
-          </h3>
+          <h3 className="mt-8 text-3xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Events</h3>
         </div>
       </section>
 
       <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
         <div className="mb-9">
-          <label
-            htmlFor="clubSelect"
-            className="block text-lg font-medium text-green-700"
-          >
-            Select Club:
-          </label>
+          <label htmlFor="clubSelect" className="block text-lg font-medium text-green-700">Select Club:</label>
           <select
             id="clubSelect"
             name="clubSelect"
@@ -83,43 +91,27 @@ function Events() {
           >
             <option value="">All Clubs</option>
             {clubNames.map((club) => (
-              <option key={club} value={club}>
-                {club}
-              </option>
+              <option key={club} value={club}>{club}</option>
             ))}
           </select>
         </div>
-        <div className="text-xl">Event Calendar</div>
-        <div className="mb-9 mt-4">
+
+        <div className="mb-9">
           <Calendar
             onChange={handleDateChange}
-            value={date}
+            value={date} // Set the selected date
             tileContent={({ date, view }) => {
-              if (view === "month" && hasEventsOnDate(date)) {
-                return (
-                  <div
-                    className="dot"
-                    style={{
-                      backgroundColor: "red",
-                      borderRadius: "50%",
-                      width: "8px",
-                      height: "8px",
-                      margin: "0 auto",
-                    }}
-                  />
-                );
+              // Only show dots in month view
+              if (view === 'month' && hasEventsOnDate(date)) {
+                return <div className="dot" style={{ backgroundColor: 'red', borderRadius: '50%', width: '8px', height: '8px', margin: '0 auto' }} />;
               }
               return null;
             }}
-            className="ml-0"
+            className="ml-0" // Align left by removing margin
           />
         </div>
 
-        {loading && (
-          <div className="flex justify-center items-center text-2xl h-32">
-            Loading Events...
-          </div>
-        )}
+        {loading && <div className="flex justify-center items-center text-2xl h-32">Loading Events...</div>}
 
         {!loading && (
           <>
@@ -129,10 +121,7 @@ function Events() {
                 const eventImageUrl = event.imageUrl;
 
                 return (
-                  <div
-                    key={eventId}
-                    className="rounded overflow-hidden shadow-lg flex flex-col"
-                  >
+                  <div key={eventId} className="rounded overflow-hidden shadow-lg flex flex-col">
                     <div className="relative">
                       <img className="w-full" src={eventImageUrl} alt="Event" />
                       <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
@@ -141,42 +130,28 @@ function Events() {
                       </div>
                     </div>
                     <div className="px-6 py-4 mb-auto">
-                      <Link
-                        to={`/eview/${eventId}/${encodeURIComponent(
-                          eventImageUrl
-                        )}/${event.clubName}/${event.description}`}
-                        className="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2"
-                      >
+                      <Link to={`/eview/${eventId}/${encodeURIComponent(eventImageUrl)}/${event.clubName}/${event.description}`} className="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
                         {event.eventName}
                       </Link>
-                      <p className="text-gray-500 text-sm mb-2">
-                        {event.minidescription}
-                      </p>
-                      <Link
-                        className="text-green-700 font-extrabold"
-                        to={`/eview/${eventId}/${encodeURIComponent(
-                          eventImageUrl
-                        )}/${event.clubName}/${event.description}`}
-                      >
-                        See more details...
-                      </Link>
+                      <p className="text-gray-500 text-sm mb-2">{event.minidescription}</p>
+                      <Link className="text-green-700 font-extrabold" to={`/eview/${eventId}/${encodeURIComponent(eventImageUrl)}/${event.clubName}/${event.description}`}>See more details...</Link>
                     </div>
-                    <div className="flex justify-center mb-2">
+                    <div className="flex justify-between items-center mb-2 px-6 py-3">
+                      <div className="flex space-x-2">
+                        <a href={event.participateLink} target="_blank" rel="noopener noreferrer" className="text-blue border-2 border-blue-500 bg-gradient-to-r from-white-500 via-white-600 to-white-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Participate</a>
+                        <a href={event.volunteerLink} target="_blank" rel="noopener noreferrer" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Volunteer</a>
+                      </div>
+                      {/* Notification Icon */}
                       <a
-                        href={event.participateLink}
+                        href={generateGoogleCalendarLink(event)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue border-2 border-blue-500 bg-gradient-to-r from-white-500 via-white-600 to-white-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                        className="text-black hover:text-indigo-600"
+                        title="Add to Google Calendar"
                       >
-                        Participate
-                      </a>
-                      <a
-                        href={event.volunteerLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                      >
-                        Volunteer
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12h4.5M15 12l3.75 3.75M15 12l3.75-3.75M3 6h18M3 6v12a2 2 0 002 2h12a2 2 0 002-2V6M3 6h18M3 6v12a2 2 0 002 2h12a2 2 0 002-2V6" />
+                        </svg>
                       </a>
                     </div>
                     <div className="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
