@@ -174,7 +174,7 @@ function EventEdit() {
     }
     return () => {};
   }, [currentUser, clubName, isDataFetched]);
-  if (!isLeader && currentUser?.name !== "OV Jayawardana") {
+  if (!isLeader && currentUser?.name !== "Onaliy Vinukiy Jayawardana") {
     return (
       <div>
         <p class="mt-56 text-3xl text-center">

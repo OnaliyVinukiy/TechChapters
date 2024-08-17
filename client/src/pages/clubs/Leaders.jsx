@@ -64,7 +64,7 @@ const Leaders = () => {
             setLoading(false);
         });
     };
-    if (!isLeader && currentUser?.name !== 'OV Jayawardana') {
+    if (!isLeader && currentUser?.name !== 'Onaliy Vinukiy Jayawardana') {
         return (
           <div>
             <p class="mt-64 text-3xl text-center">You do not have access to this page.</p>

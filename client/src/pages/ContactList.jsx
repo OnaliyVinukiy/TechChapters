@@ -19,7 +19,7 @@ const ContactList = () => {
       }
     });
   }, []);
-  if (currentUser?.name !== 'OV Jayawardana') {
+  if (currentUser?.name !== 'Onaliy Vinukiy Jayawardana') {
     return (
       <div>
         <p class="mt-56 text-3xl text-center">You do not have access to this page.</p>

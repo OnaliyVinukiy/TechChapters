@@ -205,7 +205,7 @@ const CreateListing = () => {
   };
 
   const renderClubSelection = () => {
-    const isAdmin = currentUser.name === 'OV Jayawardana';
+    const isAdmin = currentUser.name === 'Onaliy Vinukiy Jayawardana';
     const filteredClubNames = isAdmin ? clubNames : clubNames.filter((clubName) => clubName === formData.clubName);
     return (
       <select
@@ -248,7 +248,7 @@ const CreateListing = () => {
       
     };
   }, [currentUser, clubName, isDataFetched]);
-  if (!isLeader && currentUser?.name !== 'OV Jayawardana') {
+  if (!isLeader && currentUser?.name !== 'Onaliy Vinukiy Jayawardana') {
     return (
       <div>
         <p class="mt-56 text-3xl text-center">You do not have access to this page.</p>
@@ -257,7 +257,7 @@ const CreateListing = () => {
   }
   return (
     <div>
-      {(isLeader || currentUser.name === 'OV Jayawardana') && (
+      {(isLeader || currentUser.name === 'Onaliy Vinukiy Jayawardana') && (
         <section className="bg-white dark:bg-gray-900">
           <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
           <h1 className="mb-4 text-xl text-center font-bold text-gray-900 dark:text-white mt-24">Add a New Event</h1>

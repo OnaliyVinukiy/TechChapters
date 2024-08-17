@@ -503,11 +503,11 @@ export default function Home() {
         >
           <img
             className="h-auto"
-            src={img2}
+            src="https://raw.githubusercontent.com/NChapters-Project/NChapters/master/client/src/images/emotion.png"
             alt="..."
-            style={{ width: "100%" }}
+            style={{ width: "100%", height: "100%" }}
           />
-          <img src={img3} alt="..." style={{ width: "100%", height: "100%" }} />
+          
           <img
             src="https://raw.githubusercontent.com/NChapters-Project/NChapters/master/client/src/images/spandana.png"
             alt="..."
@@ -515,9 +515,9 @@ export default function Home() {
           />
           <img
             className="h-auto"
-            src={img1}
+            src="https://raw.githubusercontent.com/NChapters-Project/NChapters/master/client/src/images/safe.png"
             alt="..."
-            style={{ width: "100%" }}
+            style={{ width: "100%", height: "100%" }}
           />
         </Carousel>
       </div>
