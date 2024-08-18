@@ -80,7 +80,7 @@ export default function App() {
           path="/feedbackedit/:feedbackId/:eventId"
           element={<FeedbackEdit />}
         />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/Payment" element={<Payment />} />
         <Route path="/comingsSoon" element={<ComingSoon />} />
 
         <Route
