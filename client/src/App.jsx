@@ -36,6 +36,8 @@ import CareerGuidance from "./pages/clubs/CareerGuidance.jsx";
 import CEventEdit from "./pages/CEventEdit";
 import FeedbackMainEdit from "./pages/FeedbackEditMain.jsx";
 
+import Western from "./pages/provinces/Western.jsx";
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -60,7 +62,7 @@ export default function App() {
         <Route path="/eview/:id/:img/:cname/:des" element={<Eview />} />
         <Route path="/editclubs" element={<EditClubs />} />
         <Route path="/cEventEdit/:clubName" element={<CEventEdit />} />
-
+        <Route path="/Western" element={<Western />} />
         <Route path="/feedbackedit/:feedbackId/:eventId" element={<FeedbackEdit />} />
         <Route path="/clubview/:id" component={Clubview} />
         

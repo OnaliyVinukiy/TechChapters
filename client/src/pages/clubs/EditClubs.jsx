@@ -9,7 +9,8 @@ function EditClubs() {
   const [deleteClubsId, setDeleteClubsId] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
-    category: '',
+    university: '',
+    province: '',
     description: '',
     
     imageUrl: null,
@@ -59,7 +60,8 @@ function EditClubs() {
     setEditClubs(clubs);
     setFormData({
         name: clubs.name,
-        category: clubs.category,
+        university: clubs.university,
+        province: clubs.province,
         description:clubs.description,
         imageUrl: null,
     });
@@ -154,7 +156,10 @@ function EditClubs() {
                Club Name
             </th>
             <th scope="col" className="px-6 py-3 w-12">
-              Club Category
+              University
+            </th>
+            <th scope="col" className="px-6 py-3 w-12">
+              Province
             </th>
             <th scope="col" className="px-6 py-3">
               Description
@@ -178,7 +183,10 @@ function EditClubs() {
                 {clubs.name}
               </td>
               <td className="px-6 py-4 w-12">
-              <div className="truncate">{clubs.category}</div>
+              <div className="truncate">{clubs.university}</div>
+              </td>
+              <td className="px-6 py-4 w-12">
+              <div className="truncate">{clubs.province}</div>
               </td>
               <td className="px-6 py-4">
                 {clubs.description}

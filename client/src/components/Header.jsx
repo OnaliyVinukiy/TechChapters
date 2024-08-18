@@ -250,70 +250,200 @@ const Header = () => {
                         data-dropdown-placement="right-start"
                         type="button"
                         class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        onClick={handleDropdownToggle}
                       >
-                        Western Province
-                       
+                        Provincial
+                        <svg
+                          class="w-2.5 h-2.5 ms-2.5"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 10 6"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="m1 1 4 4 4-4"
+                          />
+                        </svg>
                       </button>
-                     
-                    </li>
-
-                    <li>
-                      <a
-                        href="/Religous"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      <div
+                        id="doubleDropdown1"
+                        class={`${
+                          isAdditionalDropdownVisible ? "block" : "hidden"
+                        } z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44`}
                       >
-                        Eastern Province
-                      </a>
+                        <ul
+                          class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                          aria-labelledby="provinceDropdownButton"
+                        >
+                          <li>
+                            <a
+                              href="/Western"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Western Province
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/Eastern"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Eastern Province
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/Central"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Central Province
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/Northern"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Northern Province
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/NorthWestern"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              North Western Province
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/NorthCentral"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              North Central Province
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/Uva"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Uva Province
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/Sabaragamuwa"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Sabaragamuwa Province
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
                     </li>
-
+                    <li class="flex items-center">
+                      <button
+                        id="doubleDropdownButton2"
+                        data-dropdown-toggle="doubleDropdown2"
+                        data-dropdown-placement="right-start"
+                        type="button"
+                        class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        onClick={handleDropdownToggle}
+                      >
+                        Other Clubs
+                        <svg
+                          class="w-2.5 h-2.5 ms-2.5"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 10 6"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="m1 1 4 4 4-4"
+                          />
+                        </svg>
+                      </button>
+                      <div
+                        id="doubleDropdown2"
+                        class={`${
+                          isAdditionalDropdownVisible ? "block" : "hidden"
+                        } z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44`}
+                      >
+                        <ul
+                          class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                          aria-labelledby="provinceDropdownButton"
+                        >
+                          <li>
+                            <a
+                              href="/Western"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Rotaract Clubs
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/Eastern"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Interact Clubs
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/Central"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Leo Clubs
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/Northern"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Toastmasters Clubs
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/NorthWestern"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              North Western Province
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/NorthCentral"
+                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              North Central Province
+                            </a>
+                          </li>
+                         
+                          
+                        </ul>
+                      </div>
+                    </li>
                     <li>
                       <a
                         href="/activitybased"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
-                        Central Province
+                        University Clubs
                       </a>
                     </li>
-                    <li>
-                      <a
-                        href="/international"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                      >
-                        Northern Province
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/international"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                      >
-                        North Western Province
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/international"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                      >
-                        North Central Province
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/international"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                      >
-                        Uva Province
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/international"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                      >
-                        Sabaragamuwa Province
-                      </a>
-                    </li>
+                   
                   </ul>
                 </div>
               </li>

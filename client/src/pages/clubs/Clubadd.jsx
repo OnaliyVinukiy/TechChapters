@@ -94,14 +94,14 @@ const currentUser = useSelector((state) => state.user.currentUser);
                 <label htmlFor="province" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Province</label>
                 <select name="province" id="province" value={formData.province} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
                 <option selected>Select Province</option>
-                    <option value="FOC">Western Province</option>
-                    <option value="FOB">Eastern Province</option>
-                    <option value="FOE">Central Province</option>
-                    <option value="FOS">North Western Province</option>
-                    <option value="International">North Central Province</option>
-                    <option value="Religious">Uva Province</option>
-                    <option value="Activity Based">Sabaragamuwa Province</option>
-                    <option value="Career Guidance">Career Guidance</option>
+                    <option value="Western">Western Province</option>
+                    <option value="Eastern">Eastern Province</option>
+                    <option value="Central">Central Province</option>
+                    <option value="Northwestern">North Western Province</option>
+                    <option value="Northcentral">North Central Province</option>
+                    <option value="Uva">Uva Province</option>
+                    <option value="Sabaragamuwa">Sabaragamuwa Province</option>
+                   
                   </select>
 
               </div>
