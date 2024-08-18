@@ -575,7 +575,7 @@ export default function Home() {
             </span>
             <div class="flex flex-col items-center mt-8 text-gray-500 sm:flex-row sm:justify-between">
               <p class="text-5xl lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
-                Clubs & Societies of Sri Lankan Universities
+                Technological Clubs & Societies of Sri Lanka
               </p>
             </div>
           </div>

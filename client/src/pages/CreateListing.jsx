@@ -255,9 +255,9 @@ const renderClubTypeSelection = () => {
             required
           >
             <option value="">Select University</option>
-            <option value="">NSBM</option>
-            <option value="">IIT</option>
-            <option value="">UOR</option>
+            <option value="NSBM">NSBM</option>
+            <option value="IIT">IIT</option>
+            <option value="UOR">UOR</option>
           </select>
         </div>
       );
@@ -275,9 +275,9 @@ const renderClubTypeSelection = () => {
             required
           >
             <option value="">Select Club Type</option>
-            <option value="">Rotaract</option>
-            <option value="">Interact</option>
-            <option value="">Toastmasters</option>
+            <option value="Rotaract">Rotaract</option>
+            <option value="Interact">Interact</option>
+            <option value="Toastmasters">Toastmasters</option>
           </select>
         </div>
       );
