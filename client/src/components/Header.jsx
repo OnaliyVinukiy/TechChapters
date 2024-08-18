@@ -9,15 +9,14 @@ import {
   signOutUserStart,
   signOutUserSuccess,
 } from "../redux/user/userSlice";
-import { getDatabase} from "firebase/database";
+import { getDatabase } from "firebase/database";
 
-import { getAuth} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { auth, database } from "../firebase"; // Import the initialized Firebase objects
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { ref, onValue } from "firebase/database";
 
 const googleProvider = new GoogleAuthProvider();
-
 
 const Header = () => {
   const [isDataFetched, setIsDataFetched] = useState(false);
@@ -116,7 +115,6 @@ const Header = () => {
       console.error("Error logging out:", error);
     }
   };
-
 
   const handleAdditionalDropdownToggle = () => {
     setIsAdditionalDropdownVisible(!isAdditionalDropdownVisible);
@@ -252,9 +250,7 @@ const Header = () => {
                         class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
                         Western Province
-                       
                       </button>
-                     
                     </li>
 
                     <li>
@@ -340,6 +336,90 @@ const Header = () => {
                 >
                   Events
                 </a>
+              </li>
+              {/* other section */}
+
+              <li class="flex items-center mr-0">
+                <button
+                  id="dropdownNavbarLink2"
+                  data-dropdown-toggle="dropdownNavbar2"
+                  class="flex items-center justify-between w-full py-2 px-3 text-black text-black md:text-lg hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 md:w-auto text-black md:hover:text-green-600 focus:text-black md:hover:bg-transparent hover:text-green-600"
+                >
+                  Other
+                  <svg
+                    class="w-2.5 h-2.5 ms-2.5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 6"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m1 1 4 4 4-4"
+                    />
+                  </svg>
+                </button>
+                <div
+                  id="dropdownNavbar2"
+                  class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700 dark:divide-gray-600"
+                >
+                  <ul
+                    class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="dropdownLargeButton"
+                  >
+                    <li>
+                      <a
+                        href="/Religous"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        Subscription
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/payment"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        Payment
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/comingSoon"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        Vendors
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/comingSoon"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        Vehicles
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/comingSoon"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        Locations
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/comingSoon"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        User Feed
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </li>
 
               {currentUser?.name === "Onaliy Vinukiy Jayawardana" && (
@@ -441,65 +521,66 @@ const Header = () => {
                 </li>
               )}
 
-              {isLeader && currentUser.name !== "Onaliy Vinukiy Jayawardana" && (
-                <li className="flex items-center relative">
-                  {/* Render additional links for leaders */}
-                  <button
-                    onClick={handleAdditionalDropdownToggle}
-                    className="flex items-center justify-between w-full py-2 px-3 text-black text-black md:text-lg hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 md:w-auto text-black md:hover:text-green-600 focus:text-black md:hover:bg-transparent hover:text-green-600"
-                  >
-                    Clubs & Events
-                    <svg
-                      className="w-2.5 h-2.5 ms-2.5"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 10 6"
+              {isLeader &&
+                currentUser.name !== "Onaliy Vinukiy Jayawardana" && (
+                  <li className="flex items-center relative">
+                    {/* Render additional links for leaders */}
+                    <button
+                      onClick={handleAdditionalDropdownToggle}
+                      className="flex items-center justify-between w-full py-2 px-3 text-black text-black md:text-lg hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 md:w-auto text-black md:hover:text-green-600 focus:text-black md:hover:bg-transparent hover:text-green-600"
                     >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 1 4 4 4-4"
-                      />
-                    </svg>
-                  </button>
-                  {isAdditionalDropdownVisible && (
-                    <div className="absolute top-full left-0 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 mt-2">
-                      <ul
-                        className="py-2 text-sm text-gray-700"
-                        aria-labelledby="doubleDropdownButton82"
+                      Clubs & Events
+                      <svg
+                        className="w-2.5 h-2.5 ms-2.5"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 10 6"
                       >
-                        <li>
-                          <a
-                            href="/createListing"
-                            className="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                          >
-                            Add Events
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href={`/cEventEdit/${clubName}`}
-                            className="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                          >
-                            Edit Events
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href={`/feedbacksedit/${clubName}`}
-                            className="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                          >
-                            Feedbacks
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </li>
-              )}
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="m1 1 4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    {isAdditionalDropdownVisible && (
+                      <div className="absolute top-full left-0 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 mt-2">
+                        <ul
+                          className="py-2 text-sm text-gray-700"
+                          aria-labelledby="doubleDropdownButton82"
+                        >
+                          <li>
+                            <a
+                              href="/createListing"
+                              className="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                            >
+                              Add Events
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href={`/cEventEdit/${clubName}`}
+                              className="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                            >
+                              Edit Events
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href={`/feedbacksedit/${clubName}`}
+                              className="block px-4 py-2 hover:bg-gray-100 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                            >
+                              Feedbacks
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
+                  </li>
+                )}
 
               <li class="flex items-center mr-0">
                 {currentUser &&
