@@ -45,6 +45,7 @@ import Uva from "./pages/provinces/Uva.jsx";
 import Sabaragamuwa from "./pages/provinces/Sabaragamuwa.jsx";
 import Payment from "./components/payment.jsx";
 import ComingSoon from "./components/comingSoon.jsx";
+import Subscriptions from "./components/Subscriptions.jsx";
 
 export default function App() {
   return (
@@ -71,11 +72,14 @@ export default function App() {
         <Route path="/editclubs" element={<EditClubs />} />
         <Route path="/cEventEdit/:clubName" element={<CEventEdit />} />
         <Route path="/Western" element={<Western />} />
-        <Route path = "/NorthWestern" element={<NorthWestern />} />
-        <Route path = "/Uva" element={<Uva />} />
-        <Route path = "/Sabaragamuwa" element={<Sabaragamuwa />} />
-        <Route path = "/NorthCentral" element={<NorthCentral />} />
-        <Route path="/feedbackedit/:feedbackId/:eventId" element={<FeedbackEdit />} />
+        <Route path="/NorthWestern" element={<NorthWestern />} />
+        <Route path="/Uva" element={<Uva />} />
+        <Route path="/Sabaragamuwa" element={<Sabaragamuwa />} />
+        <Route path="/NorthCentral" element={<NorthCentral />} />
+        <Route
+          path="/feedbackedit/:feedbackId/:eventId"
+          element={<FeedbackEdit />}
+        />
         <Route path="/payment" element={<Payment />} />
         <Route path="/comingsSoon" element={<ComingSoon />} />
 
@@ -96,13 +100,14 @@ export default function App() {
         <Route path="/cevent/:clubId/:clubName" element={<CEvents />} />
         <Route path="/fos" element={<FOS />} />
         <Route path="/religous" element={<Religous />} />
-        <Route path = "/northern" element = {<Northern />} />
-        <Route path = "/central" element = {<Central />} />
-        <Route path = "/eastern" element = {<Eastern />} />
-        <Route path = "/sabaragamuwa" element = {<Sabaragamuwa />} />
+        <Route path="/northern" element={<Northern />} />
+        <Route path="/central" element={<Central />} />
+        <Route path="/eastern" element={<Eastern />} />
+        <Route path="/sabaragamuwa" element={<Sabaragamuwa />} />
         <Route path="/activitybased" element={<ActivityBased />} />
         <Route path="/international" element={<International />} />
         <Route path="/careerguidance" element={<CareerGuidance />} />
+        <Route path="/subscriptions" element={<Subscriptions />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
           {/* <Route path="/createListing" element={<CreateListing />} /> */}
