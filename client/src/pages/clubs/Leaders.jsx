@@ -7,6 +7,7 @@ const Leaders = () => {
     email: "",
     username: "",
     club: "Select Club",
+    package: "Select Package",
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -107,11 +108,12 @@ const Leaders = () => {
       email: formData.email,
       username: formData.username,
       club: formData.club,
+      package: formData.package,
     })
       .then(() => {
         console.log("Data successfully submitted!");
         setSuccess(true);
-        setFormData({ name: "", email: "", username: "", club: "" });
+        setFormData({ name: "", email: "", username: "", club: "", package: ""});
       })
       .catch((error) => {
         console.error("Error submitting data: ", error);
@@ -263,16 +265,16 @@ const Leaders = () => {
                   User Package
                 </label>
                 <select
-            id="university"
+            id="package"
             value={formData.package}
             onChange={handleChange}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
             required
           >
-            <option value="">Select Package</option>
-            <option value="Rotaract">Basic</option>
-            <option value="Interact">Pro</option>
-            <option value="Toastmasters">Premium</option>
+            <option value="Select Package">Select Package</option>
+            <option value="Basic">Basic</option>
+            <option value="Pro">Pro</option>
+            <option value="Premium">Premium</option>
           </select>
               </div>
             </div>
