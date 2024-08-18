@@ -35,9 +35,14 @@ import International from "./pages/clubs/International.jsx";
 import CareerGuidance from "./pages/clubs/CareerGuidance.jsx";
 import CEventEdit from "./pages/CEventEdit";
 import FeedbackMainEdit from "./pages/FeedbackEditMain.jsx";
-
+import NorthWestern from "./pages/provinces/NorthWestern.jsx";
+import NorthCentral from "./pages/provinces/NorthCentral.jsx";
 import Western from "./pages/provinces/Western.jsx";
-// other
+import Eastern from "./pages/provinces/Eastern.jsx";
+import Northern from "./pages/provinces/Northern.jsx";
+import Central from "./pages/provinces/Central.jsx";
+import Uva from "./pages/provinces/Uva.jsx";
+import Sabaragamuwa from "./pages/provinces/Sabaragamuwa.jsx";
 import Payment from "./components/payment.jsx";
 import ComingSoon from "./components/comingSoon.jsx";
 
@@ -66,6 +71,10 @@ export default function App() {
         <Route path="/editclubs" element={<EditClubs />} />
         <Route path="/cEventEdit/:clubName" element={<CEventEdit />} />
         <Route path="/Western" element={<Western />} />
+        <Route path = "/NorthWestern" element={<NorthWestern />} />
+        <Route path = "/Uva" element={<Uva />} />
+        <Route path = "/Sabaragamuwa" element={<Sabaragamuwa />} />
+        <Route path = "/NorthCentral" element={<NorthCentral />} />
         <Route path="/feedbackedit/:feedbackId/:eventId" element={<FeedbackEdit />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/comingsSoon" element={<ComingSoon />} />
@@ -87,6 +96,10 @@ export default function App() {
         <Route path="/cevent/:clubId/:clubName" element={<CEvents />} />
         <Route path="/fos" element={<FOS />} />
         <Route path="/religous" element={<Religous />} />
+        <Route path = "/northern" element = {<Northern />} />
+        <Route path = "/central" element = {<Central />} />
+        <Route path = "/eastern" element = {<Eastern />} />
+        <Route path = "/sabaragamuwa" element = {<Sabaragamuwa />} />
         <Route path="/activitybased" element={<ActivityBased />} />
         <Route path="/international" element={<International />} />
         <Route path="/careerguidance" element={<CareerGuidance />} />
