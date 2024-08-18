@@ -37,6 +37,9 @@ import CEventEdit from "./pages/CEventEdit";
 import FeedbackMainEdit from "./pages/FeedbackEditMain.jsx";
 
 import Western from "./pages/provinces/Western.jsx";
+// other
+import Payment from "./components/payment.jsx";
+import ComingSoon from "./components/comingSoon.jsx";
 
 export default function App() {
   return (
@@ -64,10 +67,20 @@ export default function App() {
         <Route path="/cEventEdit/:clubName" element={<CEventEdit />} />
         <Route path="/Western" element={<Western />} />
         <Route path="/feedbackedit/:feedbackId/:eventId" element={<FeedbackEdit />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/comingsSoon" element={<ComingSoon />} />
+
+        <Route
+          path="/feedbackedit/:feedbackId/:eventId"
+          element={<FeedbackEdit />}
+        />
         <Route path="/clubview/:id" component={Clubview} />
-        
+
         <Route path="/foe" element={<FOE />} />
-        <Route path="/feedbackedit/:feedbackId/:eventId" element={<FeedbackEdit />} />
+        <Route
+          path="/feedbackedit/:feedbackId/:eventId"
+          element={<FeedbackEdit />}
+        />
         <Route path="/clubview/:id" element={<Clubview />} />
         <Route path="/feedbacksedit/:clubName" element={<FeedbacksEdit />} />
         <Route path="/feedbackseditmain" element={<FeedbackMainEdit />} />
