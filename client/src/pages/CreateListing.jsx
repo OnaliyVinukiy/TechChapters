@@ -22,6 +22,7 @@ const CreateListing = () => {
     image: null,
     clubName: "",
     university: "",
+    other: "",
     province: "",
     volunteerLink: "",
     participateLink: "",
@@ -29,6 +30,7 @@ const CreateListing = () => {
   const [alertMessage, setAlertMessage] = useState("");
   const [clubNames, setClubNames] = useState([]);
   const { currentUser } = useSelector((state) => state.user);
+  const [selectedClubType, setSelectedClubType] = useState("");
   const [isDataFetched, setIsDataFetched] = useState(false);
   const [isLeader, setIsLeader] = useState(false);
   const navigate = useNavigate();
@@ -118,6 +120,10 @@ const CreateListing = () => {
     } else {
       setFormData({ ...formData, [e.target.id]: e.target.value });
     }
+  };
+
+  const handleRadioChange = (e) => {
+    setSelectedClubType(e.target.value);
   };
 
   useEffect(() => {
@@ -234,16 +240,63 @@ const CreateListing = () => {
         setLoading(false);
       });
   };
+const renderClubTypeSelection = () => {
+    if (selectedClubType === "universityclub") {
+      return (
+        <div className="sm:col-span-2">
+          <label htmlFor="university" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            University
+          </label>
+          <select
+            id="university"
+            value={formData.university}
+            onChange={handleChange}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            required
+          >
+            <option value="">Select University</option>
+            <option value="">NSBM</option>
+            <option value="">IIT</option>
+            <option value="">UOR</option>
+          </select>
+        </div>
+      );
+    } else if (selectedClubType === "otherclub") {
+      return (
+        <div className="sm:col-span-2">
+          <label htmlFor="university" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Other Club Type
+          </label>
+          <select
+            id="university"
+            value={formData.clubtype}
+            onChange={handleChange}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            required
+          >
+            <option value="">Select Club Type</option>
+            <option value="">Rotaract</option>
+            <option value="">Interact</option>
+            <option value="">Toastmasters</option>
+          </select>
+        </div>
+      );
+    }
+    return null;
+  };
 
   const renderClubSelection = () => {
-    const isAdmin = currentUser.name === 'Onaliy Vinukiy Jayawardana';
-    const filteredClubNames = isAdmin ? clubNames : clubNames.filter((clubName) => clubName === formData.clubName);
+    const isAdmin = currentUser.name === "Onaliy Vinukiy Jayawardana";
+    const filteredClubNames = isAdmin
+      ? clubNames
+      : clubNames.filter((clubName) => clubName === formData.clubName);
     return (
       <select
         id="clubName"
         value={formData.clubName}
         onChange={handleChange}
         required
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
       >
         <option value="">Select Club</option>
         {filteredClubNames.map((clubName, index) => (
@@ -281,7 +334,7 @@ const CreateListing = () => {
     }
     return () => {};
   }, [currentUser, clubName, isDataFetched]);
-  if (!isLeader && currentUser?.name !== 'Onaliy Vinukiy Jayawardana') {
+  if (!isLeader && currentUser?.name !== "Onaliy Vinukiy Jayawardana") {
     return (
       <div>
         <p class="mt-56 text-3xl text-center">
@@ -292,19 +345,60 @@ const CreateListing = () => {
   }
   return (
     <div>
-      {(isLeader || currentUser.name === 'Onaliy Vinukiy Jayawardana') && (
+      {(isLeader || currentUser.name === "Onaliy Vinukiy Jayawardana") && (
         <section className="bg-white dark:bg-gray-900">
           <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-            <h1 className="mb-4 text-xl text-center font-bold text-gray-900 dark:text-white mt-24">
-              Add a New Event
+            <h1 className="mb-4 text-xl text-center font-bold text-gray-900 dark:text-white mt-16">
+              Add a new Event
             </h1>
 
             <form onSubmit={(e) => handleSubmit(e)}>
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+              <div className="sm:col-span-2">
+              <label htmlFor="description" className="block text-sm font-medium text-gray-900 dark:text-white">Select Club Type</label>
+              </div>
+                <div class="flex">
+                  <div class="flex items-center me-4">
+                 
+                    <input
+                      id="inline-radio"
+                      type="radio"
+                      value="universityclub"
+                      name="inline-radio-group"
+                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      checked={selectedClubType === "universityclub"}
+                      onChange={handleRadioChange}
+                    />
+                    <label
+                      for="inline-radio"
+                      class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      University Club
+                    </label>
+                  </div>
+                  <div class="flex items-center me-4">
+                    <input
+                      id="inline-2-radio"
+                      type="radio"
+                      value="otherclub"
+                      name="inline-radio-group"
+                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      checked={selectedClubType === "otherclub"}
+                       onChange={handleRadioChange}
+                    />
+                    <label
+                      for="inline-2-radio"
+                      class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      Other Club
+                    </label>
+                  </div>
+                </div>
+               {renderClubTypeSelection()}
                 <div className="sm:col-span-2">
                   <label
-                    htmlFor="eventName"
-                    className="block text-m font-medium text-gray-700 mb-1"
+                    htmlFor="name"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Event Name
                   </label>
@@ -313,61 +407,51 @@ const CreateListing = () => {
                     id="eventName"
                     value={formData.eventName}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500"
-                    style={{
-                      width: "100%",
-                      height: "62.5px",
-                      fontSize: "1.2rem",
-                      maxWidth: "100%",
-                    }}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter event name"
                     required
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label htmlFor="clubName" className="m-3">
+                  <label
+                    htmlFor="clubName"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
                     Club Name
                   </label>
                   {renderClubSelection()}
-               
-                <label htmlFor="clubName" className="m-3">
-                   University
-                  </label>
-                <select
-                  id="university"
-                  value={formData.university}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Select University</option>
-                </select>
-                <div className="sm:col-span-2 mt-4">
-                <label htmlFor="province" className="m-3">
-                   Province
-                  </label>
-                <select
-                  id="province"
-                  value={formData.province}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Select Province</option>
-                  <option value="Western">Western</option>
-                  <option value="Eastern">Eastern</option>
-                  <option value="Central">Central</option>
-                  <option value="Northern">Northen</option>
-                  <option value="Northwestern">North Western</option>
-                  <option value="Northcentral">North Central</option>
-                  <option value="Uva">Uva</option>
-                  <option value="Sabaragamuwa">Sabaragamuwa</option>
 
-                </select>
-                </div>
+                  
+                  <div className="sm:col-span-2 mt-4">
+                    <label
+                      htmlFor="province"
+                      className="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Province
+                    </label>
+                    <select
+                      id="province"
+                      value={formData.province}
+                      onChange={handleChange}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                      required
+                    >
+                      <option value="">Select Province</option>
+                      <option value="Western">Western</option>
+                      <option value="Eastern">Eastern</option>
+                      <option value="Central">Central</option>
+                      <option value="Northern">Northen</option>
+                      <option value="Northwestern">North Western</option>
+                      <option value="Northcentral">North Central</option>
+                      <option value="Uva">Uva</option>
+                      <option value="Sabaragamuwa">Sabaragamuwa</option>
+                    </select>
+                  </div>
                 </div>
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="time"
-                    className="block text-m font-medium text-gray-700 mb-1"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Time
                   </label>
@@ -376,13 +460,7 @@ const CreateListing = () => {
                     id="time"
                     value={formData.time}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500"
-                    style={{
-                      width: "100%",
-                      height: "62.5px",
-                      fontSize: "1.2rem",
-                      maxWidth: "100%",
-                    }}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter event time"
                     required
                   />
@@ -390,7 +468,7 @@ const CreateListing = () => {
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="date"
-                    className="block text-m font-medium text-gray-700 mb-1"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Date
                   </label>
@@ -399,13 +477,7 @@ const CreateListing = () => {
                     id="date"
                     value={formData.date}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500"
-                    style={{
-                      width: "100%",
-                      height: "62.5px",
-                      fontSize: "1.2rem",
-                      maxWidth: "100%",
-                    }}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter event date"
                     required
                   />
@@ -413,7 +485,7 @@ const CreateListing = () => {
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="minidescription"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Mini Description
                   </label>
@@ -422,13 +494,7 @@ const CreateListing = () => {
                     id="minidescription"
                     value={formData.minidescription}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500"
-                    style={{
-                      width: "100%",
-                      height: "62.5px",
-                      fontSize: "1.2rem",
-                      maxWidth: "100%",
-                    }}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter event mini description"
                     required
                   />
@@ -436,7 +502,7 @@ const CreateListing = () => {
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="description"
-                    className="block text-m font-medium text-gray-700 mb-1"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Description
                   </label>
@@ -445,19 +511,16 @@ const CreateListing = () => {
                     value={formData.description}
                     onChange={handleChange}
                     rows="4"
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500"
-                    style={{
-                      width: "100%",
-                      height: "187.5px",
-                      fontSize: "1.2rem",
-                      maxWidth: "100%",
-                    }}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter event description"
                     required
                   ></textarea>
                 </div>
                 <div className="sm:col-span-2">
-                  <label htmlFor="image" className="m-3">
+                  <label
+                    htmlFor="image"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
                     Image
                   </label>
                   <input
@@ -465,13 +528,14 @@ const CreateListing = () => {
                     id="image"
                     onChange={handleChange}
                     accept="image/*"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg px-8 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     required
                   />
                 </div>
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="volunteerLink"
-                    className="block text-m font-medium text-gray-700 mb-1"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Volunteer Link
                   </label>
@@ -480,20 +544,14 @@ const CreateListing = () => {
                     id="volunteerLink"
                     value={formData.volunteerLink}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500"
-                    style={{
-                      width: "100%",
-                      height: "62.5px",
-                      fontSize: "1.2rem",
-                      maxWidth: "100%",
-                    }}
+                    className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter volunteer link"
                   />
                 </div>
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="participateLink"
-                    className="block text-m font-medium text-gray-700 mb-1"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Participate Link
                   </label>
@@ -502,13 +560,7 @@ const CreateListing = () => {
                     id="participateLink"
                     value={formData.participateLink}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500"
-                    style={{
-                      width: "100%",
-                      height: "62.5px",
-                      fontSize: "1.2rem",
-                      maxWidth: "100%",
-                    }}
+                    className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter participate link"
                   />
                 </div>
