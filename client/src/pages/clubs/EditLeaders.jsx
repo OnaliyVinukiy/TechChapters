@@ -14,7 +14,8 @@ function EditLeaders() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        club: ''
+        club: '',
+        package: '',
     });
     
     const currentUser = useSelector((state) => state.user.currentUser);
@@ -64,7 +65,8 @@ function EditLeaders() {
             name: leaders.name,
             email: leaders.email,
             username: leaders.username,
-            club: leaders.club
+            club: leaders.club,
+            package: leaders.package
         });
         setIsModalOpen(true);
     };
@@ -86,7 +88,8 @@ function EditLeaders() {
             name: formData.name,
             email: formData.email,
             username: formData.username,
-            club: formData.club
+            club: formData.club,
+            package: formData.package
         };
     
         // Check if an image was uploaded
@@ -187,6 +190,9 @@ function EditLeaders() {
                             Club
                         </th>
                         <th scope="col" className="px-6 py-3">
+                            Package
+                        </th>
+                        <th scope="col" className="px-6 py-3">
                             Action
                         </th>
                         <th scope="col" className="px-6 py-3">
@@ -209,6 +215,9 @@ function EditLeaders() {
                             </td>
                             <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {leader.club}
+                            </td>
+                            <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {leader.package}
                             </td>
                             <td className="px-6 py-4">
                                 <button onClick={() => handleEdit(leader)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
@@ -236,6 +245,7 @@ function EditLeaders() {
                             <input type="text" className="m-3" id="name" value={formData.name} onChange={handleChange} placeholder="Leader's Name" required />
                             <input type="email" className="m-3" id="email" value={formData.email} onChange={handleChange} placeholder="Leader's Email" required />
                             <input type="text" className="m-3" id="club" value={formData.club} onChange={handleChange} placeholder="Club" required />
+                            <input type="text" className="m-3" id="club" value={formData.package} onChange={handleChange} placeholder="Club" required />
 
                             <button type="submit" className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300">Save Changes</button>
                             <button type="button" onClick={closeModal} className="bg-gray-400 hover:bg-gray-500 text-white font-medium py-2 px-4 rounded-lg transition duration-300 ml-2">Cancel</button>
