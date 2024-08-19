@@ -1,23 +1,38 @@
 import s1 from "../images/sample/9.jpg";
 import s2 from "../images/sample/10.jpg";
+import { loadStripe } from "@stripe/stripe-js";
 
-import axios from "axios";
-import { loadStripe } from "@stripe/stripe-js/pure";
+const stripePromise = loadStripe(
+  "pk_test_51Pp8JZDJE9QH0zh48YRGhD7dSKgpxuiH5DqwCxc0mBoQ6SCkd9DBG5HfAYUlOcIX6jWQ9aJsRMeSzNvAv6CiAyhr00q1tPlPID"
+);
 
-const Payment = () => {
+function Payment() {
   const onClick = async () => {
-    const stripe = await loadStripe(
-      "pk_test_51Pp8JZDJE9QH0zh48YRGhD7dSKgpxuiH5DqwCxc0mBoQ6SCkd9DBG5HfAYUlOcIX6jWQ9aJsRMeSzNvAv6CiAyhr00q1tPlPID"
-    );
+    const stripe = await stripePromise;
 
-    const headers = {
-      "Content-Type": "application/json",
-    };
+    // Replace 'price_id_from_stripe_dashboard' with your actual price ID from Stripe
+    const paymentLink = "https://buy.stripe.com/test_cN215B8xRcYz7EkeUU";
+
+    try {
+      window.location.href = paymentLink;
+
+      const result = await stripe.redirectToCheckout({
+        mode: "payment",
+        successUrl: `${window.location.origin}`, // Update with your success page URL
+        cancelUrl: `${window.location.origin}/payment`, // Update with your cancel page URL
+      });
+
+      if (result.error) {
+        console.error("Stripe Checkout error:", result.error.message);
+      }
+    } catch (error) {
+      console.error("Error during Stripe Checkout:", error);
+    }
   };
 
   return (
     <div className="mt-20 pt-10 flex flex-col items-center md:flex-row md:justify-center md:space-x-6 space-y-6 md:space-y-0">
-      <div className=" max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-2xl hover:scale-105 transition-transform">
+      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-2xl hover:scale-105 transition-transform">
         <a href="#">
           <img
             className="w-full h-40 object-cover rounded-t-lg"
@@ -40,7 +55,7 @@ const Payment = () => {
           </p>
           <button
             onClick={onClick}
-            className="flex w-full items-center justify-center px-3 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-800  rounded-lg  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="flex w-full items-center justify-center px-3 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-800 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Continue
           </button>
@@ -68,8 +83,8 @@ const Payment = () => {
             cooperation!
           </p>
           <a
-            href="#"
-            className="flex w-full items-center justify-center px-3 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-800  rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSf_dbVWTc--kgI1ugQ_otfkE4xrrtyw4NtiuZQhTnRKzHVJaA/viewform?usp=sf_link"
+            className="flex w-full items-center justify-center px-3 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-800 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Continue
           </a>
@@ -77,6 +92,6 @@ const Payment = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Payment;
