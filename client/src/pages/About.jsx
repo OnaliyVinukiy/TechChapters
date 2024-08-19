@@ -348,7 +348,6 @@ export default function About() {
   };
 
   const data = [
-    
     {
       name: `Onaliy Vinukiy`,
       img: pro2,
@@ -369,7 +368,7 @@ export default function About() {
       icon2:
         "<i onclick=\"window.open('https://www.instagram.com/rashminda_jc/', '_blank')\" class=\"fa-brands fa-instagram fa-2x colour\"></i>",
       icon3:
-        '<i onclick="window.open(\'https://www.linkedin.com/in/chamindu-rashminda-42565828a\', \'_blank\')" class="fa-brands fa-linkedin fa-2x colour"><a href="" ></i>',
+        '<i onclick="window.open(\'https://www.linkedin.com/in/jayamuni-rashminda-42565828a/\', \'_blank\')" class="fa-brands fa-linkedin fa-2x colour"><a href="" ></i>',
     },
   ];
 
@@ -569,4 +568,3 @@ export default function About() {
     </div>
   );
 }
-
