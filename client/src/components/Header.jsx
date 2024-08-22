@@ -53,15 +53,15 @@ const Header = () => {
 
     const fetchLeaderUsernames = () => {
       onValue(leadersRef, (snapshot) => {
-        console.log("Snapshot:", snapshot.val());
+        // console.log("Snapshot:", snapshot.val());
         if (snapshot.exists()) {
           const leaderData = snapshot.val();
           const leaderUsernames = Object.values(leaderData).map((leader) =>
             leader.username.trim()
           );
 
-          console.log("Leader Usernames:", leaderUsernames);
-          console.log("Current User:", currentUser.name);
+          // console.log("Leader Usernames:", leaderUsernames);
+          // console.log("Current User:", currentUser.name);
 
           // Normalize whitespace in currentUser.name
           const currentUserNormalized = currentUser.name
@@ -79,7 +79,7 @@ const Header = () => {
               isLeader = true;
             }
           });
-          console.log("Is Leader:", isLeader);
+          // console.log("Is Leader:", isLeader);
           setIsLeader(isLeader);
         }
       });
@@ -145,10 +145,10 @@ const Header = () => {
           );
           if (currentUserLeader) {
             setClubName(currentUserLeader.club); // Update clubName state with the club of the current user's leader
-            console.log("Club Name Assigned:", currentUserLeader.club);
+            // console.log("Club Name Assigned:", currentUserLeader.club);
           } else {
             setClubName(""); // Reset clubName state if no matching leader is found
-            console.log("Club Name Reset");
+            // console.log("Club Name Reset");
           }
         }
       });
@@ -166,7 +166,7 @@ const Header = () => {
 
   return (
     <div>
-      <nav class="bg-white border-gray-600 fixed w-full z-20 top-0 start-0 border-gray-600 bg-white mt-0 shadow-md">
+      <nav class="bg-white border-gray-600 fixed w-full z-20 top-0 start-0  mt-0 shadow-md">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3 ">
           <h1 class="flex flex-wrap text-xl font-bold cursor-pointer sm:text-2xl md:text-3xl">
             <span class="text-green-600">Tech</span>
@@ -175,7 +175,7 @@ const Header = () => {
 
           <button
             type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:focus:outline-none focus:ring-2 focus:ring-white text-gray-400 hover:bg-white "
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden hover:focus:outline-none focus:ring-2 focus:ring-white text-gray-400 hover:bg-white "
             onClick={handleDropdownToggle}
           >
             <span class="sr-only">Open main menu</span>
@@ -428,8 +428,6 @@ const Header = () => {
                               North Central Province
                             </a>
                           </li>
-                         
-                          
                         </ul>
                       </div>
                     </li>
@@ -441,7 +439,6 @@ const Header = () => {
                         University Clubs
                       </a>
                     </li>
-                   
                   </ul>
                 </div>
               </li>
@@ -453,7 +450,7 @@ const Header = () => {
                   About Us
                 </a>
               </li>
-              
+
               <li class="flex items-center mr-0">
                 <a
                   href="/Events"
