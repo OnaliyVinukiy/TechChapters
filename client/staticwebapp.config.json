@@ -1,6 +1,14 @@
 {
     "routes": [
       {
+        "route": "/",
+        "rewrite": "/index.html"
+      },
+      {
+        "route": "/assets/*",
+        "statusCode": 200
+      },
+      {
         "route": "/*",
         "rewrite": "/index.html"
       }
