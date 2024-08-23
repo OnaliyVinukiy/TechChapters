@@ -46,6 +46,8 @@ import Sabaragamuwa from "./pages/provinces/Sabaragamuwa.jsx";
 import Payment from "./components/payment.jsx";
 import ComingSoon from "./components/comingSoon.jsx";
 import Subscriptions from "./components/Subscriptions.jsx";
+import UserFeed from "./components/userFeed.jsx";
+import FeedForm from ".//components/feedForm.jsx";
 
 export default function App() {
   return (
@@ -76,6 +78,7 @@ export default function App() {
         <Route path="/Uva" element={<Uva />} />
         <Route path="/Sabaragamuwa" element={<Sabaragamuwa />} />
         <Route path="/NorthCentral" element={<NorthCentral />} />
+
         <Route
           path="/feedbackedit/:feedbackId/:eventId"
           element={<FeedbackEdit />}
@@ -108,6 +111,9 @@ export default function App() {
         <Route path="/international" element={<International />} />
         <Route path="/careerguidance" element={<CareerGuidance />} />
         <Route path="/subscriptions" element={<Subscriptions />} />
+        <Route path="/feed" element={<UserFeed />} />
+        <Route path="/feedForm" element={<FeedForm />} />
+
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
           {/* <Route path="/createListing" element={<CreateListing />} /> */}
